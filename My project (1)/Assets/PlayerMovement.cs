@@ -6,7 +6,6 @@ public class PlayerMovement : MonoBehaviour
    public Rigidbody rb;
     public float jumpForce = 5f;
     private bool isGrounded;
-    
     public int coinCount = 0;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -22,7 +21,9 @@ public class PlayerMovement : MonoBehaviour
       float moveVertical = Input.GetAxis("Vertical");
 
         rb.linearVelocity = new Vector3(moveHorizontal * moveSpeed, rb.linearVelocity.y, moveVertical * moveSpeed);
-        if (Input.GetKeyDown("Jump") && isGrounded)
+
+
+        if (Input.GetButtonDown("Jump") && isGrounded)
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             isGrounded = false;
