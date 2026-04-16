@@ -640,7 +640,7 @@ GameObject:
   - component: {fileID: 592483735}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -652,7 +652,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 592483728}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: c916781bd9bac3f4680cac64945f813b, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -754,9 +754,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   moveSpeed: 5
+  jumpForce: 7
+  turnSpeed: 10
+  fallMultplier: 2.5
+  lowJumMultiplier: 2
+  coyoteTime: 0.15
+  coyoteTimeCounter: 0
+  realGrouned: 1
+  gliderObject: {fileID: 1335714240}
+  gliderFallSpeed: 1
+  gliderFMoveSpeed: 7
+  gliderMaxTime: 5
+  gliderTimerLeft: 0
+  isGliding: 0
   rb: {fileID: 592483734}
-  jumpForce: 5
   coinCount: 0
+  targetRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!54 &592483734
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -982,6 +995,68 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 15.019, y: 0, z: 0}
+--- !u!1001 &1335714239
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: b8825b6869b9844469e56842eabe7e3c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b8825b6869b9844469e56842eabe7e3c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.81773
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b8825b6869b9844469e56842eabe7e3c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b8825b6869b9844469e56842eabe7e3c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b8825b6869b9844469e56842eabe7e3c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b8825b6869b9844469e56842eabe7e3c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b8825b6869b9844469e56842eabe7e3c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b8825b6869b9844469e56842eabe7e3c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b8825b6869b9844469e56842eabe7e3c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b8825b6869b9844469e56842eabe7e3c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b8825b6869b9844469e56842eabe7e3c, type: 3}
+      propertyPath: m_Name
+      value: Glider
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b8825b6869b9844469e56842eabe7e3c, type: 3}
+--- !u!1 &1335714240 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: b8825b6869b9844469e56842eabe7e3c, type: 3}
+  m_PrefabInstance: {fileID: 1335714239}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1378110892
 GameObject:
   m_ObjectHideFlags: 0
@@ -1294,6 +1369,7 @@ SceneRoots:
   - {fileID: 961739753}
   - {fileID: 203844589}
   - {fileID: 592483732}
+  - {fileID: 1335714239}
   - {fileID: 608404791}
   - {fileID: 1378110894}
   - {fileID: 2138596336}
